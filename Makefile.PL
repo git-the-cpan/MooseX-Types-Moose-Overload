@@ -6,6 +6,7 @@ author   'Evan Carroll <me@evancarroll.com>';
 license  'perl';
 
 requires 'Moose';
+requires 'MooseX::Types';
 requires 'overload';
 
 build_requires 'Test::More';

@@ -6,7 +6,7 @@ use base 'MooseX::Types::Moose';
 use mro 'c3';
 use overload;
 
-our $VERSION = '0.01_01';
+our $VERSION = '0.01_02';
 
 ## {
 ## 	Str => :ltrim, :rtrim:, :trim, :multispace

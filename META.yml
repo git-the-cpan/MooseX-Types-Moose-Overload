@@ -17,8 +17,9 @@ no_index:
     - t
 requires:
   Moose: 0
+  MooseX::Types: 0
   overload: 0
   perl: 5.01
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.01_01
+version: 0.01_02

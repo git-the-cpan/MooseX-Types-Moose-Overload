@@ -17,8 +17,8 @@
 #     NAME => q[MooseX::Types::Moose::Overload]
 #     NO_META => q[1]
 #     PL_FILES => {  }
-#     PREREQ_PM => { Test::More=>q[0], ExtUtils::MakeMaker=>q[6.44], overload=>q[0], Moose=>q[0] }
-#     VERSION => q[0.01_01]
+#     PREREQ_PM => { Test::More=>q[0], MooseX::Types=>q[0], ExtUtils::MakeMaker=>q[6.44], overload=>q[0], Moose=>q[0] }
+#     VERSION => q[0.01_02]
 #     dist => { PREOP=>q[$(PERL) -I. "-MModule::Install::Admin" -e "dist_preop(q($(DISTVNAME)))"] }
 #     test => { TESTS=>q[t/00-load.t t/01-basic_use.t t/boilerplate.t t/pod-coverage.t t/pod.t] }
 
@@ -59,11 +59,11 @@ DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
 NAME = MooseX::Types::Moose::Overload
 NAME_SYM = MooseX_Types_Moose_Overload
-VERSION = 0.01_01
+VERSION = 0.01_02
 VERSION_MACRO = VERSION
-VERSION_SYM = 0_01_01
+VERSION_SYM = 0_01_02
 DEFINE_VERSION = -D$(VERSION_MACRO)=\"$(VERSION)\"
-XS_VERSION = 0.01_01
+XS_VERSION = 0.01_02
 XS_VERSION_MACRO = XS_VERSION
 XS_DEFINE_VERSION = -D$(XS_VERSION_MACRO)=\"$(XS_VERSION)\"
 INST_ARCHLIB = blib/arch
@@ -184,12 +184,9 @@ PERL_ARCHIVE       =
 PERL_ARCHIVE_AFTER = 
 
 
-TO_INST_PM = lib/MooseX/Types/Moose/.Overload.pm.swp \
-	lib/MooseX/Types/Moose/Overload.pm
+TO_INST_PM = lib/MooseX/Types/Moose/Overload.pm
 
-PM_TO_BLIB = lib/MooseX/Types/Moose/.Overload.pm.swp \
-	blib/lib/MooseX/Types/Moose/.Overload.pm.swp \
-	lib/MooseX/Types/Moose/Overload.pm \
+PM_TO_BLIB = lib/MooseX/Types/Moose/Overload.pm \
 	blib/lib/MooseX/Types/Moose/Overload.pm
 
 
@@ -257,7 +254,7 @@ RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
 DISTNAME = MooseX-Types-Moose-Overload
-DISTVNAME = MooseX-Types-Moose-Overload-0.01_01
+DISTVNAME = MooseX-Types-Moose-Overload-0.01_02
 
 
 # --- MakeMaker macro section:
@@ -765,13 +762,14 @@ testdb_static :: testdb_dynamic
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,01_01,0,0">' > $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="0,01_02,0,0">' > $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <TITLE>$(DISTNAME)</TITLE>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <ABSTRACT>Deal with overload, in the overloaded sense ;)</ABSTRACT>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <AUTHOR>Evan Carroll &lt;me@evancarroll.com&gt;</AUTHOR>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="ExtUtils-MakeMaker" VERSION="6,44,0,0" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="Moose" VERSION="0,0,0,0" />' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="MooseX-Types" VERSION="0,0,0,0" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="Test-More" VERSION="0,0,0,0" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <DEPENDENCY NAME="overload" VERSION="0,0,0,0" />' >> $(DISTNAME).ppd
 	$(NOECHO) $(ECHO) '        <OS NAME="$(OSNAME)" />' >> $(DISTNAME).ppd
@@ -785,7 +783,6 @@ ppd :
 
 pm_to_blib : $(TO_INST_PM)
 	$(NOECHO) $(ABSPERLRUN) -MExtUtils::Install -e 'pm_to_blib({@ARGV}, '\''$(INST_LIB)/auto'\'', '\''$(PM_FILTER)'\'')' -- \
-	  lib/MooseX/Types/Moose/.Overload.pm.swp blib/lib/MooseX/Types/Moose/.Overload.pm.swp \
 	  lib/MooseX/Types/Moose/Overload.pm blib/lib/MooseX/Types/Moose/Overload.pm 
 	$(NOECHO) $(TOUCH) pm_to_blib
 
